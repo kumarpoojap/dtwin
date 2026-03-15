@@ -1,0 +1,450 @@
+{
+  "airflow_lps": {
+    "low": 8.09,
+    "high": 8.14
+  },
+  "cool_output_kwh": {
+    "low": 2.8,
+    "high": 6.3
+  },
+  "cool_demand_kwh": {
+    "low": 2.8,
+    "high": 6.3
+  },
+  "evap_fan_speed_pct": {
+    "low": 77.6,
+    "high": 78.1
+  },
+  "return_air_c": {
+    "low": 24.5,
+    "high": 25.413999999999998
+  },
+  "suction_c": {
+    "low": 15.372,
+    "high": 18.3
+  },
+  "supply_air_c": {
+    "low": 19.9,
+    "high": 21.1
+  },
+  "min_rack_inlet_c": {
+    "low": 22.6,
+    "high": 23.1
+  },
+  "airflow_lps_lag1": {
+    "low": 8.09,
+    "high": 8.14
+  },
+  "airflow_lps_lag3": {
+    "low": 8.09,
+    "high": 8.14
+  },
+  "airflow_lps_lag6": {
+    "low": 8.09,
+    "high": 8.14
+  },
+  "airflow_lps_lag12": {
+    "low": 8.09,
+    "high": 8.14
+  },
+  "cool_output_kwh_lag1": {
+    "low": 2.8,
+    "high": 6.3
+  },
+  "cool_output_kwh_lag3": {
+    "low": 2.8,
+    "high": 6.3
+  },
+  "cool_output_kwh_lag6": {
+    "low": 2.8,
+    "high": 6.3
+  },
+  "cool_output_kwh_lag12": {
+    "low": 2.8,
+    "high": 6.3
+  },
+  "cool_demand_kwh_lag1": {
+    "low": 2.8,
+    "high": 6.3
+  },
+  "cool_demand_kwh_lag3": {
+    "low": 2.8,
+    "high": 6.3
+  },
+  "cool_demand_kwh_lag6": {
+    "low": 2.8,
+    "high": 6.3
+  },
+  "cool_demand_kwh_lag12": {
+    "low": 2.8,
+    "high": 6.3
+  },
+  "evap_fan_speed_pct_lag1": {
+    "low": 77.6,
+    "high": 78.1
+  },
+  "evap_fan_speed_pct_lag3": {
+    "low": 77.6,
+    "high": 78.1
+  },
+  "evap_fan_speed_pct_lag6": {
+    "low": 77.6,
+    "high": 78.1
+  },
+  "evap_fan_speed_pct_lag12": {
+    "low": 77.6,
+    "high": 78.1
+  },
+  "return_air_c_lag1": {
+    "low": 24.5,
+    "high": 25.413999999999998
+  },
+  "return_air_c_lag3": {
+    "low": 24.5,
+    "high": 25.413999999999998
+  },
+  "return_air_c_lag6": {
+    "low": 24.5,
+    "high": 25.413999999999998
+  },
+  "return_air_c_lag12": {
+    "low": 24.5,
+    "high": 25.413999999999998
+  },
+  "suction_c_lag1": {
+    "low": 15.372,
+    "high": 18.3
+  },
+  "suction_c_lag3": {
+    "low": 15.372,
+    "high": 18.3
+  },
+  "suction_c_lag6": {
+    "low": 15.372,
+    "high": 18.3
+  },
+  "suction_c_lag12": {
+    "low": 15.372,
+    "high": 18.3
+  },
+  "supply_air_c_lag1": {
+    "low": 19.9,
+    "high": 21.1
+  },
+  "supply_air_c_lag3": {
+    "low": 19.9,
+    "high": 21.1
+  },
+  "supply_air_c_lag6": {
+    "low": 19.9,
+    "high": 21.1
+  },
+  "supply_air_c_lag12": {
+    "low": 19.9,
+    "high": 21.1
+  },
+  "min_rack_inlet_c_lag1": {
+    "low": 22.6,
+    "high": 23.1
+  },
+  "min_rack_inlet_c_lag3": {
+    "low": 22.6,
+    "high": 23.1
+  },
+  "min_rack_inlet_c_lag6": {
+    "low": 22.6,
+    "high": 23.1
+  },
+  "min_rack_inlet_c_lag12": {
+    "low": 22.6,
+    "high": 23.1
+  },
+  "airflow_lps_roll3_mean": {
+    "low": 8.09,
+    "high": 8.14
+  },
+  "airflow_lps_roll3_std": {
+    "low": 0.0,
+    "high": 0.02357022603955322
+  },
+  "airflow_lps_roll3_delta": {
+    "low": -0.030000000000001137,
+    "high": 0.03140000000000072
+  },
+  "airflow_lps_roll6_mean": {
+    "low": 8.093099999999998,
+    "high": 8.132366666666668
+  },
+  "airflow_lps_roll6_std": {
+    "low": 0.0,
+    "high": 0.0222903048624949
+  },
+  "airflow_lps_roll6_delta": {
+    "low": -0.030000000000001137,
+    "high": 0.040000000000000924
+  },
+  "airflow_lps_roll12_mean": {
+    "low": 8.095,
+    "high": 8.130833333333333
+  },
+  "airflow_lps_roll12_std": {
+    "low": 0.0040326844927388375,
+    "high": 0.02173067468401337
+  },
+  "airflow_lps_roll12_delta": {
+    "low": -0.030000000000001137,
+    "high": 0.040000000000000924
+  },
+  "cool_output_kwh_roll3_mean": {
+    "low": 2.8666666666666667,
+    "high": 6.333333333333333
+  },
+  "cool_output_kwh_roll3_std": {
+    "low": 0.0,
+    "high": 0.6622055868919218
+  },
+  "cool_output_kwh_roll3_delta": {
+    "low": -1.0999999999999996,
+    "high": 1.5
+  },
+  "cool_output_kwh_roll6_mean": {
+    "low": 2.9,
+    "high": 6.054666666666667
+  },
+  "cool_output_kwh_roll6_std": {
+    "low": 0.0,
+    "high": 0.9080610011835011
+  },
+  "cool_output_kwh_roll6_delta": {
+    "low": -1.7000000000000002,
+    "high": 2.2
+  },
+  "cool_output_kwh_roll12_mean": {
+    "low": 2.9250000000000003,
+    "high": 5.509499999999999
+  },
+  "cool_output_kwh_roll12_std": {
+    "low": 0.035919703266206256,
+    "high": 1.0862728460571414
+  },
+  "cool_output_kwh_roll12_delta": {
+    "low": -1.9000000000000004,
+    "high": 2.2
+  },
+  "cool_demand_kwh_roll3_mean": {
+    "low": 2.8666666666666667,
+    "high": 6.318666666666664
+  },
+  "cool_demand_kwh_roll3_std": {
+    "low": 0.0,
+    "high": 0.5987495757445085
+  },
+  "cool_demand_kwh_roll3_delta": {
+    "low": -1.0999999999999996,
+    "high": 1.7000000000000002
+  },
+  "cool_demand_kwh_roll6_mean": {
+    "low": 2.9,
+    "high": 6.035666666666667
+  },
+  "cool_demand_kwh_roll6_std": {
+    "low": 0.0,
+    "high": 0.8310221198954091
+  },
+  "cool_demand_kwh_roll6_delta": {
+    "low": -1.7000000000000002,
+    "high": 2.1000000000000005
+  },
+  "cool_demand_kwh_roll12_mean": {
+    "low": 2.9166666666666665,
+    "high": 5.479666666666667
+  },
+  "cool_demand_kwh_roll12_std": {
+    "low": 0.027638539919604927,
+    "high": 1.0678585173902533
+  },
+  "cool_demand_kwh_roll12_delta": {
+    "low": -1.8000000000000007,
+    "high": 2.2
+  },
+  "evap_fan_speed_pct_roll3_mean": {
+    "low": 77.6,
+    "high": 78.03333333333333
+  },
+  "evap_fan_speed_pct_roll3_std": {
+    "low": 0.0,
+    "high": 0.1885618083163143
+  },
+  "evap_fan_speed_pct_roll3_delta": {
+    "low": -0.30000000000001137,
+    "high": 0.4000000000000057
+  },
+  "evap_fan_speed_pct_roll6_mean": {
+    "low": 77.61666666666666,
+    "high": 78.0
+  },
+  "evap_fan_speed_pct_roll6_std": {
+    "low": 0.0,
+    "high": 0.20344259359557448
+  },
+  "evap_fan_speed_pct_roll6_delta": {
+    "low": -0.30000000000001137,
+    "high": 0.4000000000000057
+  },
+  "evap_fan_speed_pct_roll12_mean": {
+    "low": 77.64999999999999,
+    "high": 77.96666666666667
+  },
+  "evap_fan_speed_pct_roll12_std": {
+    "low": 0.02763853991962439,
+    "high": 0.1863389981249766
+  },
+  "evap_fan_speed_pct_roll12_delta": {
+    "low": -0.30000000000001137,
+    "high": 0.39999999999999347
+  },
+  "return_air_c_roll3_mean": {
+    "low": 24.53333333333333,
+    "high": 25.46666666666667
+  },
+  "return_air_c_roll3_std": {
+    "low": 0.0,
+    "high": 0.0942809041581904
+  },
+  "return_air_c_roll3_delta": {
+    "low": -0.20000000000000284,
+    "high": 0.20000000000000284
+  },
+  "return_air_c_roll6_mean": {
+    "low": 24.566666666666666,
+    "high": 25.469
+  },
+  "return_air_c_roll6_std": {
+    "low": 0.0,
+    "high": 0.0999999999999691
+  },
+  "return_air_c_roll6_delta": {
+    "low": -0.29999999999999766,
+    "high": 0.3000000000000007
+  },
+  "return_air_c_roll12_mean": {
+    "low": 24.575000000000003,
+    "high": 25.4345
+  },
+  "return_air_c_roll12_std": {
+    "low": 0.0,
+    "high": 0.14702207285694624
+  },
+  "return_air_c_roll12_delta": {
+    "low": -0.32800000000000057,
+    "high": 0.3000000000000007
+  },
+  "suction_c_roll3_mean": {
+    "low": 15.543333333333335,
+    "high": 18.271333333333335
+  },
+  "suction_c_roll3_std": {
+    "low": 0.0,
+    "high": 0.6128258770282733
+  },
+  "suction_c_roll3_delta": {
+    "low": -1.2999999999999972,
+    "high": 1.4999999999999982
+  },
+  "suction_c_roll6_mean": {
+    "low": 15.757333333333332,
+    "high": 18.238
+  },
+  "suction_c_roll6_std": {
+    "low": 0.0,
+    "high": 0.9509795241135521
+  },
+  "suction_c_roll6_delta": {
+    "low": -2.2420000000000004,
+    "high": 2.6139999999999985
+  },
+  "suction_c_roll12_mean": {
+    "low": 16.360833333333332,
+    "high": 18.201166666666666
+  },
+  "suction_c_roll12_std": {
+    "low": 0.04930066485915859,
+    "high": 1.2013419223871808
+  },
+  "suction_c_roll12_delta": {
+    "low": -2.528,
+    "high": 2.441999999999998
+  },
+  "supply_air_c_roll3_mean": {
+    "low": 19.933333333333334,
+    "high": 21.1
+  },
+  "supply_air_c_roll3_std": {
+    "low": 0.0,
+    "high": 0.188561808316395
+  },
+  "supply_air_c_roll3_delta": {
+    "low": -0.8000000000000007,
+    "high": 0.2140000000000012
+  },
+  "supply_air_c_roll6_mean": {
+    "low": 19.997666666666667,
+    "high": 21.1
+  },
+  "supply_air_c_roll6_std": {
+    "low": 0.0,
+    "high": 0.3641855221727901
+  },
+  "supply_air_c_roll6_delta": {
+    "low": -1.1000000000000014,
+    "high": 0.40000000000000213
+  },
+  "supply_air_c_roll12_mean": {
+    "low": 20.181,
+    "high": 21.1
+  },
+  "supply_air_c_roll12_std": {
+    "low": 0.0,
+    "high": 0.4908056398179637
+  },
+  "supply_air_c_roll12_delta": {
+    "low": -1.0,
+    "high": 0.7000000000000028
+  },
+  "min_rack_inlet_c_roll3_mean": {
+    "low": 22.566666666666666,
+    "high": 23.1
+  },
+  "min_rack_inlet_c_roll3_std": {
+    "low": 0.0,
+    "high": 0.08164965809278943
+  },
+  "min_rack_inlet_c_roll3_delta": {
+    "low": -0.1999999999999993,
+    "high": 0.11399999999999975
+  },
+  "min_rack_inlet_c_roll6_mean": {
+    "low": 22.583333333333332,
+    "high": 23.1
+  },
+  "min_rack_inlet_c_roll6_std": {
+    "low": 0.0,
+    "high": 0.09038668881773644
+  },
+  "min_rack_inlet_c_roll6_delta": {
+    "low": -0.20000000000000284,
+    "high": 0.20000000000000284
+  },
+  "min_rack_inlet_c_roll12_mean": {
+    "low": 22.583333333333332,
+    "high": 23.09166666666667
+  },
+  "min_rack_inlet_c_roll12_std": {
+    "low": 0.0,
+    "high": 0.12555432644432488
+  },
+  "min_rack_inlet_c_roll12_delta": {
+    "low": -0.3000000000000007,
+    "high": 0.2140000000000007
+  }
+}

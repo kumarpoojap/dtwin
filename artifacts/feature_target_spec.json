@@ -1,0 +1,46 @@
+{
+  "resample_rule": "10s",
+  "feature_cols": [
+    "airflow_lps",
+    "cool_output_kwh",
+    "cool_demand_kwh",
+    "evap_fan_speed_pct",
+    "return_air_c",
+    "suction_c",
+    "supply_air_c",
+    "min_rack_inlet_c"
+  ],
+  "target_cols_raw": [
+    "temp_cabin3_back_34u_c",
+    "temp_cabin3_back_24u_c",
+    "temp_cabin3_back_22u_c",
+    "temp_cabin3_back_20u_c",
+    "temp_cabin3_back_28u_c",
+    "temp_cabin3_back_42u_c",
+    "temp_cabin3_back_30u_c",
+    "temp_cabin3_back_40u_c",
+    "temp_cabin3_back_32u_c",
+    "temp_cabin3_back_26u_c",
+    "temp_cabin3_back_38u_c",
+    "temp_cabin3_back_36u_c"
+  ],
+  "target_cols_normalized": [
+    "temp_cabin3_back_34u_c_z",
+    "temp_cabin3_back_24u_c_z",
+    "temp_cabin3_back_22u_c_z",
+    "temp_cabin3_back_20u_c_z",
+    "temp_cabin3_back_28u_c_z",
+    "temp_cabin3_back_42u_c_z",
+    "temp_cabin3_back_30u_c_z",
+    "temp_cabin3_back_40u_c_z",
+    "temp_cabin3_back_32u_c_z",
+    "temp_cabin3_back_26u_c_z",
+    "temp_cabin3_back_38u_c_z",
+    "temp_cabin3_back_36u_c_z"
+  ],
+  "notes": [
+    "Features come from in-row cooler telemetry.",
+    "Targets are NetBotz rear temperature probes at various U-levels.",
+    "Z-score normalization applied only to NetBotz columns; scaler saved to scaler_netbotz.pkl"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "n_rows": 697,
+  "train_idx": [
+    0,
+    486
+  ],
+  "val_idx": [
+    487,
+    590
+  ],
+  "test_idx": [
+    591,
+    696
+  ],
+  "target_mode": "normalized"
+}

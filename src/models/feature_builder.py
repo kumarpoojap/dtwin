@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+<<<<<<< HEAD
 import re
 from dataclasses import dataclass
 from typing import Dict, Iterable, List, Optional, Sequence, Tuple
@@ -10,6 +11,23 @@ import pandas as pd
 
 _LAG_RE = re.compile(r"^(?P<base>.+)_lag(?P<lag>\d+)$")
 _ROLL_RE = re.compile(r"^(?P<base>.+)_roll(?P<w>\d+)_(?P<kind>mean|std|delta)$")
+=======
+from dataclasses import dataclass
+from typing import List, Sequence
+
+import pandas as pd
+
+from src.common.features import (
+    ensure_datetime_index,
+    add_lag_features,
+    add_rolling_features,
+    compute_winsor_bounds,
+    apply_winsorization,
+    drop_low_variance_features,
+    materialize_features_from_list,
+    build_feature_column_names,
+)
+>>>>>>> ecf8702 (feat: Consolidate shared utilities into src/common package)
 
 
 @dataclass(frozen=True)
@@ -20,6 +38,7 @@ class SupervisedDataset:
     target_cols: List[str]
 
 
+<<<<<<< HEAD
 def ensure_datetime_index(df: pd.DataFrame) -> pd.DataFrame:
     if isinstance(df.index, pd.DatetimeIndex):
         return df.sort_index()
@@ -45,6 +64,8 @@ def add_lag_features(df: pd.DataFrame, base_cols: Sequence[str], lags: Sequence[
     return df_out
 
 
+=======
+>>>>>>> ecf8702 (feat: Consolidate shared utilities into src/common package)
 def build_feature_columns(
     base_feature_cols: Sequence[str],
     exog_lags: Sequence[int],
@@ -53,6 +74,7 @@ def build_feature_columns(
     include_target_lags: bool,
     rolling_windows: Sequence[int],
 ) -> List[str]:
+<<<<<<< HEAD
     feat_cols: List[str] = []
 
     feat_cols.extend(list(base_feature_cols))
@@ -67,12 +89,25 @@ def build_feature_columns(
             feat_cols.append(f"{c}_roll{w_i}_std")
             feat_cols.append(f"{c}_roll{w_i}_delta")
 
+=======
+    """Build feature column names (legacy wrapper for compatibility)."""
+    feat_cols: List[str] = []
+    
+    # Base + exog lags + rolling
+    feat_cols.extend(build_feature_column_names(base_feature_cols, exog_lags, rolling_windows))
+    
+    # Target lags if requested
+>>>>>>> ecf8702 (feat: Consolidate shared utilities into src/common package)
     if include_target_lags:
         for c in target_cols:
             for l in target_lags:
                 feat_cols.append(f"{c}_lag{int(l)}")
+<<<<<<< HEAD
 
     # De-duplicate but preserve order
+=======
+    
+>>>>>>> ecf8702 (feat: Consolidate shared utilities into src/common package)
     return list(dict.fromkeys(feat_cols))
 
 
@@ -90,6 +125,11 @@ def build_supervised_dataset(
 ) -> SupervisedDataset:
     """
     Build X(t) and y(t+k) from a time-indexed dataframe.
+<<<<<<< HEAD
+=======
+    
+    Legacy wrapper that uses official PINN feature builder.
+>>>>>>> ecf8702 (feat: Consolidate shared utilities into src/common package)
 
     Official feature set:
     - base_feature_cols
@@ -104,7 +144,11 @@ def build_supervised_dataset(
 
     df = ensure_datetime_index(df)
 
+<<<<<<< HEAD
     # Engineer features
+=======
+    # Engineer features using official builder
+>>>>>>> ecf8702 (feat: Consolidate shared utilities into src/common package)
     feature_cols = build_feature_columns(
         base_feature_cols=base_feature_cols,
         exog_lags=exog_lags,
@@ -118,6 +162,7 @@ def build_supervised_dataset(
     if include_target_lags:
         df_feat = add_lag_features(df_feat, base_cols=target_cols, lags=target_lags)
 
+<<<<<<< HEAD
     # Past-looking rolling windows over base (exogenous) features
     for c in base_feature_cols:
         if c not in df_feat.columns:
@@ -128,6 +173,10 @@ def build_supervised_dataset(
             df_feat[f"{c}_roll{w_i}_mean"] = s.rolling(window=w_i, min_periods=w_i).mean()
             df_feat[f"{c}_roll{w_i}_std"] = s.rolling(window=w_i, min_periods=w_i).std(ddof=0)
             df_feat[f"{c}_roll{w_i}_delta"] = s - s.shift(w_i)
+=======
+    # Rolling windows
+    df_feat = add_rolling_features(df_feat, base_cols=base_feature_cols, windows=rolling_windows)
+>>>>>>> ecf8702 (feat: Consolidate shared utilities into src/common package)
 
     # Labels: future targets
     y_future = df_feat[list(target_cols)].shift(-int(k_ahead))
@@ -150,6 +199,7 @@ def materialize_features_from_feature_list(
     feature_cols: Sequence[str],
 ) -> pd.DataFrame:
     """
+<<<<<<< HEAD
     Given a base dataframe (typically the preprocessed parquet) and an *engineered*
     feature column list (like artifacts/feature_columns.json), materialize those
     features (currently supports *_lagN patterns).
@@ -249,3 +299,15 @@ def drop_near_constant_features(
     variances = X_train.var(axis=0, ddof=0)
     keep = variances[variances >= threshold].index.tolist()
     return keep
+=======
+    Legacy wrapper for materialize_features_from_list.
+    
+    Given a base dataframe and engineered feature column list,
+    materialize those features.
+    """
+    return materialize_features_from_list(df, feature_cols)
+
+
+# Legacy aliases for backward compatibility
+drop_near_constant_features = drop_low_variance_features
+>>>>>>> ecf8702 (feat: Consolidate shared utilities into src/common package)

@@ -1,0 +1,142 @@
+# Hybrid PINN + Teacher Training Configuration
+
+data:
+  parquet_path: "artifacts/previousDesign_merged.parquet"
+  spec_path: "artifacts/feature_target_spec.json"
+  feature_columns_path: "artifacts/feature_columns.json"
+  
+  # Feature engineering (must match official builder)
+  features:
+    base_cols: ["airflow_lps", "cool_output_kwh", "cool_demand_kwh", "evap_fan_speed_pct", 
+                "return_air_c", "suction_c", "supply_air_c", "min_rack_inlet_c"]
+    lags: [1, 3, 6, 12]
+    roll_windows: [3, 6, 12]
+    winsorize: true
+    winsor_quantiles: [0.01, 0.99]
+    low_var_threshold: 1.0e-8
+  
+  # k-ahead prediction
+  k_ahead: 12
+  cadence_seconds: 10.0
+  
+  # Splits (time-based)
+  train_frac: 0.7
+  val_frac: 0.15
+  test_frac: 0.15
+  
+  # Target normalization (TRAIN only)
+  normalize_targets: true
+
+teacher:
+  enabled: true
+  model_path: "artifacts_rf/model_random_forest.pkl"
+  cache_dir: "artifacts/teacher_cache"
+  use_cache: true
+
+model:
+  # Architecture
+  input_dim: null  # auto-detected from features
+  hidden_dims: [128, 128, 128]
+  output_dim: null  # auto-detected from targets
+  activation: "silu"
+  dropout: 0.1
+  
+  # Time embedding
+  time_embedding:
+    enabled: true
+    method: "fourier"  # fourier or sinusoidal
+    n_freqs: 16
+  
+  # Physics head (optional learnable params per target)
+  physics_head:
+    enabled: true
+    learn_params: true  # C, h, beta, gamma via softplus
+
+training:
+  device: "cuda"  # cuda or cpu
+  seed: 42
+  batch_size: 256
+  num_workers: 4
+  
+  # Optimizer
+  optimizer: "adam"
+  lr_initial: 2.0e-3
+  lr_final: 5.0e-4
+  weight_decay: 1.0e-5
+  
+  # Scheduler
+  scheduler: "cosine"
+  warmup_epochs: 5
+  
+  # Early stopping
+  early_stopping:
+    enabled: true
+    patience: 15
+    metric: "val_skill_rmse"  # higher is better
+    mode: "max"
+  
+  # Curriculum phases
+  curriculum:
+    phase1:
+      name: "stabilize"
+      epochs: 30
+      loss_weights:
+        data: 1.0
+        teacher: 0.2
+        physics: 0.0
+        monotonic: 0.0
+        smoothness: 0.05
+    
+    phase2:
+      name: "physics_on"
+      epochs: 40
+      loss_weights:
+        data: 1.0
+        teacher: 0.1
+        physics: 0.5
+        monotonic: 0.1
+        smoothness: 0.05
+    
+    phase3:
+      name: "control_ready"
+      epochs: 30
+      loss_weights:
+        data: 1.0
+        teacher: 0.05
+        physics: 0.5
+        monotonic: 0.2
+        smoothness: 0.05
+
+losses:
+  # Physics ODE residual
+  physics:
+    window_size: 12  # steps to average supply/airflow/load
+    use_load_proxy: true
+    load_proxy_col: "cool_demand_kwh"
+  
+  # Monotonic cooling constraint
+  monotonic:
+    actuator_col: "evap_fan_speed_pct"  # or airflow_lps
+    epsilon: 0.01  # perturbation for finite diff
+    penalty_type: "relu"  # relu or quadratic
+  
+  # Temporal smoothness
+  smoothness:
+    order: 1  # first-order differences
+
+output:
+  artifacts_dir: "artifacts"
+  metrics_dir: "artifacts/metrics"
+  plots_dir: "artifacts/plots"
+  logs_dir: "artifacts/logs"
+  checkpoint_dir: "artifacts/checkpoints"
+  
+  save_best: true
+  save_last: true
+  log_interval: 10  # batches
+  val_interval: 1  # epochs
+
+dev_run:
+  enabled: false
+  max_samples: 1000
+  max_epochs: 2
